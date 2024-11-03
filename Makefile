@@ -1,12 +1,2 @@
-CC = g++
-CFLAGS = -Wall -Wextra -Werror
-SRC = test.cpp first_lab.cpp
-
-build: test.cpp first_lab.cpp
-	$(CC) $(CFLAGS) $(SRC) -o final
-
-clean:
-	rm -rf final
-
-all: clean build
-	
+all: main.cpp
+	g++ -o usb main.cpp -lusb-1.0
