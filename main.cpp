@@ -27,6 +27,7 @@ int main() {
     // получить список всех найденных USB- устройств
     cnt = libusb_get_device_list(ctx, &devs);
     if (cnt < 0) {
+        libusb_exit(ctx);
         fprintf(stderr, "Ошибка: список USB устройств не получен.\n");
         return 1;
     }
