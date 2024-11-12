@@ -17,15 +17,18 @@ int main() {
         cv::GaussianBlur(frame, smooth_frame, cv::Size(9, 9), 0);
         cv::imshow("Original", frame);
         cv::imshow("Smooth", smooth_frame);
+
+        auto current_time = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> elapsed = current_time - start_time;
+        double fps = 1.0 / elapsed.count();
+        start_time = current_time;
+        std::cout << "Frames per second: " << fps << std::endl;
+
         char c = (char)cv::waitKey(33);
         if (c == 27) break;
         frame_count++;
     }
 
-    auto end_time = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end_time - start_time;
-    double fps = frame_count / elapsed.count();
-    std::cout << "Frames per second: " << fps << std::endl;
     capture.release();
     cv::destroyAllWindows();
     return 0;
