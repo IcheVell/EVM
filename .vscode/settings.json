@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "without_vectorized.h": "c",
+        "string.h": "c"
+    }
+}

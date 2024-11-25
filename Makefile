@@ -1,12 +1,15 @@
-CC = g++
-CFLAGS = -Wall -Wextra -Werror
-SRC = test.cpp first_lab.cpp
+all: clean build
 
-build: test.cpp first_lab.cpp
-	$(CC) $(CFLAGS) $(SRC) -o final
+build: build_man build_vect build_lib
+
+build_man: without_vectorized.c without_vectorized_func.c
+	gcc -O1 without_vectorized.c without_vectorized_func.c -o without
+
+build_vect: man_vectorized.c man_vectorized_func.c
+	gcc -O1 man_vectorized.c man_vectorized_func.c -o man_vectorized
+
+build_lib: lib.c lib_func.c
+	gcc -O1 lib.c lib_func.c -o lib -lblas
 
 clean:
-	rm -rf final
-
-all: clean build
-	
+	rm -rf without man_vectorized lib
