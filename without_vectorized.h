@@ -19,7 +19,7 @@ double* add(const double* A, const double* B, int N);
 double* scalarMultiply(double scalar, const double* A, int N);
 double norm1(const double* A, int N);
 double normInf(const double* A, int N);
-void printMatrix(const double* A, int N, const char* description);
+void printMatrix(const double* A, int N);
 double* generateRandomMatrix(int N, unsigned int seed);
 
 #endif

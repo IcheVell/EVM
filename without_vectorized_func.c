@@ -83,8 +83,7 @@ double normInf(const double* A, int N) {
     return maxSum;
 }
 
-void printMatrix(const double* A, int N, const char* description) {
-    printf("%s:\n", description);
+void printMatrix(const double* A, int N) {
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < N; ++j) {
             printf("%10.6lf ", A[i * N + j]);

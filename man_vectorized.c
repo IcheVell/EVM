@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     }
 
     printf("M: ");
-    if (scanf("%d", &M) != 1 || M <= 0 || M != N) {
+    if (scanf("%d", &M) != 1 || M <= 0) {
         printf("Неккоректный ввод M\n");
         return EXIT_FAILURE;
     }
@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
     double elapsed_nsec = end.tv_nsec - start.tv_nsec;
     double elapsed_time = elapsed_sec * 1000.0 + elapsed_nsec / 1.0e6;
 
-    if (N <= 20){
+    if (N <= MAX_SIZE_OF_PRINTABLE_MATRIX){
         printf("Обратная матрица: \n");
         printMatrix(A_inv, N);
     } 

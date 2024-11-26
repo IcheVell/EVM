@@ -3,7 +3,7 @@
 double* createZeroMatrix(int N) {
     double* matrix;
     if (posix_memalign((void**)&matrix, 16, N * N * sizeof(double)) != 0) {
-        fprintf(stderr, "Ошибка выделения памяти для матрицы.\n");
+        printf("Ошибка выделения памяти для матрицы\n");
         exit(EXIT_FAILURE);
     }
     memset(matrix, 0, N * N * sizeof(double));

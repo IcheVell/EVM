@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     }
 
     printf("M: ");
-    if (scanf("%d", &M) != 1 || M <= 0 || M != N) {
+    if (scanf("%d", &M) != 1 || M <= 0) {
         printf("Неккоректный ввод M\n");
         return EXIT_FAILURE;
     }
@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
     if (argc > 1 && !strcmp(argv[1], "random")) {
         A = generateRandomMatrix(N, time(NULL));
         if (N <= MAX_SIZE_OF_PRINTABLE_MATRIX){
-            printMatrix(A, N, "Сгенерированная матрица A");
+            printMatrix(A, N);
         }
     } else {
         A = createZeroMatrix(N);
@@ -82,8 +82,9 @@ int main(int argc, char* argv[]) {
     double elapsed_time = (end.tv_sec - start.tv_sec) * 1000.0;
     elapsed_time += (end.tv_nsec - start.tv_nsec) / 1.0e6;
 
-    if (N <= 20){
-        printMatrix(A_inv, N, "A_inv");
+    if (N <= MAX_SIZE_OF_PRINTABLE_MATRIX){
+        printf("A_inv: \n");
+        printMatrix(A_inv, N);
     }
 
     printf("Время вычислений: %.3lf ms\n", elapsed_time);
