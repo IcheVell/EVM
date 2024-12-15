@@ -3,13 +3,11 @@
 int main(int argc, char* argv[]) {
     int N, M;
 
-    printf("N: ");
     if (scanf("%d", &N) != 1 || N <= 0) {
         printf("Неккоректный ввод N\n");
         return EXIT_FAILURE;
     }
 
-    printf("M: ");
     if (scanf("%d", &M) != 1 || M <= 0) {
         printf("Неккоректный ввод M\n");
         return EXIT_FAILURE;

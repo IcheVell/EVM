@@ -3,13 +3,11 @@
 int main(int argc, char* argv[]) {
     int N, M;
 
-    printf("N: ");
     if (scanf("%d", &N) != 1 || N <= 0) {
         fprintf(stderr, "Некорректный размер матрицы.\n");
         return EXIT_FAILURE;
     }
 
-    printf("M: ");
     if (scanf("%d", &M) != 1 || M <= 0) {
         fprintf(stderr, "Некорректное число членов ряда.\n");
         return EXIT_FAILURE;
@@ -83,7 +81,6 @@ int main(int argc, char* argv[]) {
     double elapsed_nsec = end.tv_nsec - start.tv_nsec;
     double elapsed_time = elapsed_sec * 1000.0 + elapsed_nsec / 1.0e6;
 
-    printf("Обратная матрица: \n");
     if (N <= MAX_SIZE_OF_PRINTABLE_MATRIX){
         matrix_print(A_inv, N);
     }
