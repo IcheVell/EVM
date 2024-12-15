@@ -1,7 +1,7 @@
 all: clean build
 
-build: main.c	
-	gcc main.c -o main
+build: main.cpp	
+	g++ -O1 main.cpp -o main
 
 clean:
 	rm -rf main
