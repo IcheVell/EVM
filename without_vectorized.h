@@ -9,6 +9,8 @@
 #include <stdint.h>
 
 #define MAX_SIZE_OF_PRINTABLE_MATRIX 15
+#define EPSILON 0.4
+#define COUNT_LOOPS 2048
 
 
 double* createZeroMatrix(int N);
@@ -21,5 +23,6 @@ double norm1(const double* A, int N);
 double normInf(const double* A, int N);
 void printMatrix(const double* A, int N);
 double* generateRandomMatrix(int N, unsigned int seed);
+int isIdentityMatrix(double* matrix, int N);
 
 #endif

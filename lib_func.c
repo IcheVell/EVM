@@ -99,3 +99,21 @@ void matrix_print(const double* A, int N) {
         printf("\n");
     }
 }
+
+int isIdentityMatrix(double* matrix, int N) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            int index = i * N + j;
+            if (i == j) {
+                if (fabs(matrix[index] - 1.0) > EPSILON) {
+                    return 0;
+                }
+            } else {
+                if (fabs(matrix[index]) > EPSILON) {
+                    return 0;
+                }
+            }
+        }
+    }
+    return 1;
+}

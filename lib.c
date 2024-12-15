@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
     double* R_power = matrix_createZeroMatrix(N);
     memcpy(R_power, R, sizeof(double) * N * N); 
 
-    for (int k = 1; k < M; ++k) {
+    for (int k = 1; k < 2048; ++k) {
 
         double* temp = matrix_add(S, R_power, N);
         free(S);
@@ -75,6 +75,7 @@ int main(int argc, char* argv[]) {
     free(S);
     free(B);
 
+
     clock_gettime(CLOCK_MONOTONIC, &end);
 
     double elapsed_sec = end.tv_sec - start.tv_sec;
@@ -87,6 +88,15 @@ int main(int argc, char* argv[]) {
 
     printf("Время вычислений: %.3f ms\n", elapsed_time);
 
+    double* m_check = matrix_multiply(A, A_inv, N);
+
+    if (isIdentityMatrix(m_check, N)) {
+        printf("Обратная матрица корректна\n");
+    } else {
+        printf("Обратная матрица некорректна\n");
+    }
+
+    matrix_print(m_check, N);
     free(A);
     free(A_inv);
 

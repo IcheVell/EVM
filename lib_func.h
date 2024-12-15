@@ -10,6 +10,8 @@
 #include <stdbool.h>
 
 #define MAX_SIZE_OF_PRINTABLE_MATRIX 15
+#define EPSILON 0.4
+#define COUNT_LOOPS 2048
 
 double* matrix_createZeroMatrix(int N);
 double* matrix_createIdentityMatrix(int N);
@@ -21,5 +23,6 @@ double* matrix_generateRandomMatrix(int N);
 double matrix_norm1(const double* A, int N);
 double matrix_normInf(const double* A, int N);
 void matrix_print(const double* A, int N);
+int isIdentityMatrix(double* matrix, int N);
 
 #endif

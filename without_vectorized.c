@@ -59,12 +59,15 @@ int main(int argc, char* argv[]) {
 
 
     for (int k = 1; k < M; ++k) {
-        double* temp = multiply(R_power, R, N);
-        double* new_S = add(S, temp, N);
-        free(S);
-        free(temp);
-        S = new_S;
+    double* temp_power = multiply(R_power, R, N); 
+    free(R_power);
+    R_power = temp_power;
+
+    double* new_S = add(S, R_power, N);
+    free(S);
+    S = new_S;
     }
+
     free(R_power);
 
     double* A_inv = multiply(S, B, N);
@@ -75,7 +78,7 @@ int main(int argc, char* argv[]) {
         free(A_inv);
         free(A);
         return EXIT_FAILURE;
-    }
+    }   
 
     double elapsed_time = (end.tv_sec - start.tv_sec) * 1000.0;
     elapsed_time += (end.tv_nsec - start.tv_nsec) / 1.0e6;
@@ -86,6 +89,14 @@ int main(int argc, char* argv[]) {
     }
 
     printf("Время вычислений: %.3lf ms\n", elapsed_time);
+
+    double* m_check = multiply(A, A_inv, N);
+
+    if (isIdentityMatrix(m_check, N)) {
+        printf("Обратная матрица корректна\n");
+    } else {
+        printf("Обратная матрица некорректна\n");
+    }
 
     free(A);
     free(R);

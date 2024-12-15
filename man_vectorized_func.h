@@ -8,6 +8,8 @@
 #include <time.h>
 
 #define MAX_SIZE_OF_PRINTABLE_MATRIX 15
+#define EPSILON 0.4
+#define COUNT_LOOPS 2048
 
 typedef double v2df __attribute__ ((vector_size (16)));
 
@@ -21,5 +23,6 @@ double* generateRandomMatrix(int N);
 double norm1(double* A, int N);
 double normInf(double* A, int N);
 void printMatrix(double* A, int N);
+int isIdentityMatrix(double* matrix, int N);
 
 #endif

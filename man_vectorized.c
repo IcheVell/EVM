@@ -86,6 +86,15 @@ int main(int argc, char* argv[]) {
 
     printf("Время вычислений: %.3f ms\n", elapsed_time);
 
+    double* m_check = createZeroMatrix(N);
+    multiply(A, A_inv, m_check, N);
+
+    if (isIdentityMatrix(m_check, N)) {
+        printf("Обратная матрица корректна\n");
+    } else {
+        printf("Обратная матрица некорректна\n");
+    }
+
     free(A);
     free(AT);
     free(B);
