@@ -18,10 +18,10 @@ uint64_t ReadTimeStampCounter() {
 }
 
 void RunCacheLatencyTest(
-    size_t cacheSizeL1 = 40 * 1024,
-    size_t cacheSizeL2 = 1.4 * 1024 * 1024,
+    size_t cacheSizeL1 = 320 * 1024,
+    size_t cacheSizeL2 = 7 * 1024 * 1024,
     size_t cacheSizeL3 = 12 * 1024 * 1024,
-    size_t maxFragments = 64,
+    size_t maxFragments = 32,
     size_t trialCount = 1000000
 ) {
     size_t offsetBytes = 16 * 1024 * 1024;
