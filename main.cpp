@@ -18,21 +18,18 @@ uint64_t ReadTimeStampCounter() {
 }
 
 void RunCacheLatencyTest(
-    size_t cacheSizeL1 = 320 * 1024,
-    size_t cacheSizeL2 = 7 * 1024 * 1024,
-    size_t cacheSizeL3 = 12 * 1024 * 1024,
     size_t maxFragments = 32,
     size_t trialCount = 1000000
 ) {
     size_t offsetBytes = 16 * 1024 * 1024;
-    size_t fragmentSize = offsetBytes / sizeof(int);
+    size_t fragmentSize = offsetBytes / sizeof(size_t);
 
     std::cout << "Fragments\tAverage Access Time (cycles)" << std::endl;
 
     for (size_t fragmentCount = 1; fragmentCount <= maxFragments; fragmentCount++) {
         size_t arraySize = fragmentCount * fragmentSize;
 
-        std::vector<int> dataArray(arraySize, 0);
+        std::vector<size_t> dataArray(arraySize, 0);
 
         for (size_t index = 0; index < arraySize; index++) {
             size_t currentFragment = index / fragmentSize;
@@ -42,10 +39,10 @@ void RunCacheLatencyTest(
             size_t nextIndex = nextFragment * fragmentSize + offsetWithinFragment;
             if (nextIndex >= arraySize)
                 nextIndex = 0;
-            dataArray[index] = static_cast<int>(nextIndex);
+            dataArray[index] = nextIndex;
         }
 
-        volatile int currentIndex = 0;
+        volatile size_t currentIndex = 0;
 
         for (size_t index = 0; index < arraySize; index++) {
             currentIndex = dataArray[currentIndex];
